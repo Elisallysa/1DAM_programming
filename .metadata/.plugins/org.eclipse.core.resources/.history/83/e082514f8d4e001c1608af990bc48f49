@@ -1,0 +1,21 @@
+package examen_programacion;
+
+public class RodriguezElisa_PROG_UD4_Recup {
+
+	public static void main(String[] args) {
+		
+		String palabra = "Hola";
+		
+		System.out.println((int)palabra.length());
+		
+
+	}
+	
+	public static boolean isSorted(String[] array {
+		
+	}
+	
+	
+	
+
+}

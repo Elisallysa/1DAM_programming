@@ -1,0 +1,70 @@
+package poo;
+
+public class cuentaBancaria {
+
+	// Propiedades
+	private double saldo;
+	private int pin;
+	private String dniPropietario;
+	private String IBAN;
+	private boolean bloqueada;
+	
+	// Constructores
+	public cuentaBancaria(int pin, String dniPropietario) {
+		super();
+		this.pin = pin;
+		this.dniPropietario = dniPropietario;
+		this.saldo = 0;
+		this.bliqueada = false;
+		this.IBAN = Integer.toString((int)Math.random()*1000000+1000000);
+	}
+	// Getters and setters
+	void ingreso (int cantidad) {}
+	public double getSaldo() {
+		return saldo;
+	}
+
+
+
+	public String getDniPropietario() {
+		return dniPropietario;
+	}
+
+
+
+	public String getIBAN() {
+		return IBAN;
+	}
+
+
+
+	public boolean isBloqueada() {
+		return bloqueada;
+	}
+
+
+
+	
+	
+	
+	
+	// Métodos
+	public void retirada (int cantidad) {}
+	
+	//boolean comprobarPin (int pinIntroducido) {return false}
+	
+	public void transferencia (CuentaBancaria destino, int pasta) {
+		if (this.saldo > pasta) {
+			this.saldo -= pasta;
+			destino.ingreso(pasta);
+		}
+	}
+	boolean comprobarPin
+	
+	
+	@Override
+	public String toString() {
+		return "cuentaBancaria [saldo=" + saldo + ", pin=" + pin + ", dniPropietario=" + dniPropietario + ", IBAN="
+				+ IBAN + ", bloqueada=" + bloqueada + "]";
+	}
+}

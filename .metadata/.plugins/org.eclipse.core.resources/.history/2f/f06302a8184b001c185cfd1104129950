@@ -1,0 +1,77 @@
+package poo;
+
+import java.util.Scanner;
+
+import poo.cuentaBancaria;
+
+public class Main_cuentaBancaria {
+	static cuentaBancaria miCuenta = new cuentaBancaria(1234, "12345679H");
+	static cuentaBancaria tuCuenta = new cuentaBancaria(9876, "98765432L");
+
+	public static void main(String[] args) {
+
+//		COMPROBACIONES:
+		
+//		System.out.println(miCuenta.comprobarPin(1234));
+//		System.out.println(miCuenta);
+//		System.out.println(miCuenta.comprobarPin(2547));
+//		System.out.println(miCuenta.getIBAN());
+//		
+//		//Ingreso en mi cuenta
+//		miCuenta.ingreso(30);
+//		System.out.println(miCuenta);
+//		
+//		//Retirada en mi cuenta
+//		miCuenta.retirada(20);
+//		System.out.println(miCuenta);
+//		miCuenta.retirada(30);
+//		System.out.println(miCuenta);
+//		System.out.println(miCuenta.comprobarPin(2547));
+//		miCuenta.ingreso(30);
+//		
+//		//Transferencia
+//		miCuenta.transferencia(tuCuenta, 10);
+//		System.out.println(miCuenta);
+//		System.out.println(tuCuenta);
+		
+		// Menú principal donde se piden los datos
+		int opc = 0;
+		Scanner s = new Scanner(System.in);
+		
+		String dni, pin; //Para leer por teclado
+		System.out.println("BIENVENIDO A LA CAIJA");
+		System.out.println("Introduce tu DNI: ");
+		dni = s.nextLine();
+		
+		if(miCuenta.getDniPropietario().equals(dni)) {
+			pin = s.nextLine();
+			do {
+				boolean accesoPermitido;
+				System.out.println("Introduce tu PIN: ");
+				accesoPermitido = miCuenta.comprobarPin(Integer.parseInt(pin));
+				if(accesoPermitido) { //Menú del cajero
+				System.out.println("Acceso permitido");
+			} else {
+				System.out.println("PIN ERRÓNEO");
+			}
+			}while (!accesoPermitido);
+		}
+	}
+
+//	public static void logicaCajero(int opcion) {
+//		switch (opcion) {
+//		case 1:
+//			System.out.println("¿Cuánto quiere ingresar?");
+//			int cantidad = Integer.parseInt(sc.nextLine());
+//			miCuenta.ingreso(cantidad);
+//			break;
+//		case 2:
+//			break;
+//		case 3:
+//			break;
+//		case 4:
+//			System.out.println("Adiós.");
+//		}
+//	}
+
+}

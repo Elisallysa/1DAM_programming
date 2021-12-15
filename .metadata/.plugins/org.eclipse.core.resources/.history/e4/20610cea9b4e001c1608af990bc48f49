@@ -1,0 +1,65 @@
+package examen_programacion;
+
+public class RodriguezElisa_PROG_UD4_Recup {
+
+	public static void main(String[] args) {
+
+		// 1. PRUEBA FUNCIÓN isSorted
+
+		String frase[] = { "Tus", "tres", "perros", "vomitan", "compulsivamente" };
+		String frase2[] = { "He", "tardao", "un", "taco", "en", "hacer", "este", "puto", "ejemplo" };
+		String frase3[] = { "Yo", "pruebo", "definitivamente", "JA" };
+		// int error [] = {1,2,3};
+
+		System.out.println("ORDEN ASCENDENTE:");
+		System.out.println(isSorted(frase));
+		System.out.println(isSorted(frase2));
+		System.out.println(isSorted(frase3));
+		// System.out.println(isSorted(error));
+
+		// 2. PRUEBA FUNCIÓN isCapicua
+
+		int capicuaPar[] = { 1, 2,3,3, 2, 1 };
+		int capicuaImpar[] = { 1, 2, 3, 2, 1};
+		int noCapicuaPar[] = { 1, 2, 3, 5, 2, 1 };
+		int noCapicuaImpar[] = { 1, 2, 3, 1, 1 };
+
+		System.out.println("CAPICÚAS:");
+		System.out.println(isCapicua(capicuaPar));
+		System.out.println(isCapicua(capicuaImpar));
+		System.out.println(isCapicua(noCapicuaPar));
+		System.out.println(isCapicua(noCapicuaImpar));
+
+	}
+
+	public static boolean isSorted(String[] array) {
+
+		for (int i = 0; i < array.length - 1; i++) {
+			if (array[i].length() <= array[i + 1].length()) {
+
+			} else {
+				return false;
+			}
+		}
+		return true;
+
+	}
+
+	public static boolean isCapicua(int[] array) {
+
+		int capicua = array.length - 1;
+
+			for (int i = 0; i < array.length; i++) {
+
+				if (array[i] == array[capicua]) {
+					capicua--;
+				
+				}else {
+					return false;
+				}
+				
+			} return true;
+
+	}
+
+}

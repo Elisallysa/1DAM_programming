@@ -1,0 +1,31 @@
+package poo;
+
+import poo.cuentaBancaria;
+
+public class Main_cuentaBancaria {
+	static cuentaBancaria miCuenta = new CuentaBancaria(1234, "12345679H");
+	static cuentaBancaria tuCuenta = new CuentaBancaria(9876, "98765432L");
+
+	public static void main(String[] args) {
+
+		// Menú principal donde se piden los datos
+
+	}
+
+	public static void logicaCajero(int opcion) {
+		switch (opcion) {
+		case 1:
+			System.out.println("¿Cuánto quiere ingresar?");
+			int cantidad = Integer.parseInt(sc.nextLine());
+			miCuenta.ingreso(cantidad);
+			break;
+		case 2:
+			break;
+		case 3:
+			break;
+		case 4:
+			System.out.println("Adiós.");
+		}
+	}
+
+}

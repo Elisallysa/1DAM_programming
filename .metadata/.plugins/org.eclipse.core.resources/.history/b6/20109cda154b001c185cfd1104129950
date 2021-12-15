@@ -1,0 +1,47 @@
+package poo;
+
+import poo.cuentaBancaria;
+
+public class Main_cuentaBancaria {
+	static cuentaBancaria miCuenta = new cuentaBancaria(1234, "12345679H");
+	static cuentaBancaria tuCuenta = new cuentaBancaria(9876, "98765432L");
+
+	public static void main(String[] args) {
+
+		System.out.println(miCuenta.comprobarPin(1234));
+		System.out.println(miCuenta);
+		System.out.println(miCuenta.comprobarPin(2547));
+		System.out.println(miCuenta.getIBAN());
+		miCuenta.ingreso(30);
+		System.out.println(miCuenta);
+		miCuenta.retirada(20);
+		System.out.println(miCuenta);
+		miCuenta.retirada(30);
+		System.out.println(miCuenta);
+		System.out.println(miCuenta.comprobarPin(2547));
+		System.out.println(miCuenta.comprobarPin(2547));
+		System.out.println(miCuenta.comprobarPin(2547));
+		System.out.println(miCuenta);
+		miCuenta.ingreso(50);
+		
+		// Menú principal donde se piden los datos
+
+	}
+
+//	public static void logicaCajero(int opcion) {
+//		switch (opcion) {
+//		case 1:
+//			System.out.println("¿Cuánto quiere ingresar?");
+//			int cantidad = Integer.parseInt(sc.nextLine());
+//			miCuenta.ingreso(cantidad);
+//			break;
+//		case 2:
+//			break;
+//		case 3:
+//			break;
+//		case 4:
+//			System.out.println("Adiós.");
+//		}
+//	}
+
+}
