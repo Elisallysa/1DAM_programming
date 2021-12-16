@@ -1,0 +1,13 @@
+package models;
+
+public class pruebas {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+		int random = (int) (Math.random()*40);
+		System.out.println(random);
+		
+	}
+
+}

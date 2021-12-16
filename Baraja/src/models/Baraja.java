@@ -1,6 +1,7 @@
 package models;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 public class Baraja {
 
@@ -20,6 +21,11 @@ public class Baraja {
 		lista_cartas = new ArrayList<>();
 	}
 
+	/**
+	 * Constructor que crea una baraja de 40 o una baraja doble de 80. 
+	 * Se le asigna un numero a cada carta (1-40). En el caso de la bajara doble, cada carta aparece duplicada en la lista.
+	 * @param tipobaraja - Entero (1 o 2) que se introducirá para seleccionar el tipo de baraja.
+	 */
 	public Baraja(int tipobaraja) {
 		this();
 		if (tipobaraja == 1 || tipobaraja == 2) {
@@ -32,45 +38,106 @@ public class Baraja {
 			}
 		}
 	}
-
+	
+	/**
+	 * Constructor para crear una baraja simple o doble barajada.
+	 * @param tipobaraja - entero (1 o 2) que crea una baraja simple (40 cartas) o doble (80 cartas).
+	 * @param barajar - Baraja las cartas de forma aleatoria.
+	 */
 	public Baraja(int tipobaraja, boolean barajar) {
 		this(tipobaraja);
 		barajar();
-	
+
 	}
 
 	// Métodos
 	/**
-	 * 
+	 * Método que baraja las Cartas de la lista de forma aleatoria.
 	 */
 	public void barajar() {
-		
+		Collections.shuffle(lista_cartas);
+
+		this.lista_cartas.get(0);
+
+		/*
+		 * Otra forma:
+		 * 
+		 * ArrayList<Carta> aux = new ArrayList<Carta>();
+		 * int con = this.lista_cartas.size();
+		 * while (!this.lista_cartas.isEmpty()) {
+		 * int random = (int) (Math.random() * con);
+		 * aux.add(this.lista_cartas.get(random));
+		 * this.lista_cartas.remove(random);
+		 * con--;
+		 * }
+		 * 
+		 * for (int i = 0; i < aux.size();
+		 * i++) { this.lista_cartas.add(aux.get(i)); }
+		 * 
+		 */
 	}
-	
+
+	/**
+	 * Método que corta la baraja por un punto aleatorio y pasa la primera mitad al final del mazo.
+	 */
 	public void cortar() {
-		
+		ArrayList<Carta> aux = new ArrayList<Carta>();
+		int size = this.lista_cartas.size();
+		int corte = (int) (Math.random() * size);
+		for (int i = corte; i < this.lista_cartas.size(); i++) {
+			aux.add(this.lista_cartas.get(i));
+			
+		}
+		for (int j = 0; j < corte; j++) {
+			aux.add(this.lista_cartas.get(j));
+		}
 	}
-	
-	public void robar() {
-		
+
+	/**
+	 * Método que elimina una carta de la lista.
+	 * @return Una carta menos en la baraja.
+	 */
+	public Carta robar() {
+		return this.lista_cartas.remove(0);
 	}
-	
+
+	/**
+	 * Método que inserta una carta al final de la baraja.
+	 * @param id_carta - Número entero que corresponde al ID de una carta de la baraja.
+	 */
 	public void insertaCartaFinal(int id_carta) {
-		
+		this.lista_cartas.add(new Carta(id_carta));
 	}
 	
+	/**
+	 * Método que inserta una carta al principio de la baraja.
+	 * @param id_carta - Número entero que corresponde al ID de una carta de la baraja.
+	 */
 	public void insertaCartaPrincipio(int id_carta) {
-		
+		this.lista_cartas.add(0, new Carta(id_carta));
 	}
-	
+
+	/**
+	 * Método que inserta una carta al final de la baraja.
+	 * @param c - Objeto que representa una Carta de la baraja.
+	 */
 	public void insertaCartaFinal(Carta c) {
-		
+		this.lista_cartas.add(c);
 	}
-	
+
+	/**
+	 * Método que inserta una carta al principio de la baraja.
+	 * @param c - Objeto que representa una Carta de la baraja.
+	 */
 	public void insertaCartaPrincipio(Carta c) {
-		
+		this.lista_cartas.add(0, c);
 	}
 
-	// toStrings
-
+	/**
+	 * Método que devuelve true si la lista está vacía.
+	 * @return true: si la lista está vacía; false: si la lista tiene cartas.
+	 */
+	public boolean isVacia() {
+		return this.lista_cartas.isEmpty();
+	}
 }

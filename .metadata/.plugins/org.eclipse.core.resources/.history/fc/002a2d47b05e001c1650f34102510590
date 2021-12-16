@@ -1,0 +1,68 @@
+package main;
+
+import java.util.ArrayList;
+import java.util.Scanner;
+import models.Baraja;
+import models.Carta;
+
+public class MainApp {
+
+	public static void main(String[] args) {
+		jugar7ymedia();
+	}
+
+	public static void jugar7ymedia() {
+		Scanner s = new Scanner(System.in);
+
+		Baraja baraja = new Baraja(1, true);
+
+		double puntuacion = 0;
+		int choice;
+		boolean finJuego = false;
+		ArrayList<Carta> mano = new ArrayList<Carta>();
+
+		System.out.println("Juego de las 7 y media:\n");
+
+		try {
+			do {
+				System.out.println("¿Qué deseas hacer?\n1.Coger carta\t2.Plantarme");
+				choice = Integer.parseInt(s.nextLine());
+				if (choice == 1) {
+					Carta aux = new Carta(baraja.robar().getId());
+					mano.add(aux);
+					puntuacion += aux.getValor7yMedia();
+					System.out.println("Has sacado el " + aux.getNombreCarta() + "\tTu puntuación: " + puntuacion);
+					System.out.println("Tu mano de cartas:");
+					for (int i = 0; i < mano.size(); i++) {
+						System.out.println("· " + mano.get(i).getNombreCarta());
+					}
+				} else if (choice == 2) {
+					finJuego = true;
+				} else if (choice != 2) {
+					System.out.println("Por favor, introduce el número 1 o 2 para continuar con el juego o plantarte.");
+				}
+			} while (puntuacion < 7.5 || finJuego);
+		} catch (Exception exc) {
+			System.out.println("Por favor, introduzca el 1 o el 2 para jugar.");
+		}
+
+		if (puntuacion == 0) {
+			System.out.println("PUSSY!");
+		}
+		if (puntuacion > 0 && puntuacion < 6) {
+			System.out.println("Qué cagao.");
+		}
+		if (puntuacion > 6 && puntuacion < 7.5) {
+			System.out.println("Ufffff rozando.");
+		}
+		if (puntuacion == 7.5) {
+			System.out.println("Qué potra, chaval.");
+		}
+		if (puntuacion > 7.5) {
+			System.out.println("Te has pasado.");
+		}
+
+		s.close();
+	}
+
+}

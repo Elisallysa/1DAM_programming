@@ -1,0 +1,94 @@
+package models;
+
+import java.util.ArrayList;
+import java.util.Collections;
+
+public class Baraja {
+
+	/**
+	 * La única propiedad de la baraja es un ArrayList con las cartas que incluye la
+	 * baraja. ¡No se puede dejar una propiedad sin inicializar!
+	 */
+	// Propiedades
+	private ArrayList<Carta> lista_cartas;
+
+	/**
+	 * Si yo creo una baraja vacía y no le reservo memoria, no va a funcionar. Se le
+	 * reserva la memoria añadiendo "lista_cartas = new ArrayList<>();
+	 */
+	// Constructores
+	public Baraja() {
+		lista_cartas = new ArrayList<>();
+	}
+
+	public Baraja(int tipobaraja) {
+		this();
+		if (tipobaraja == 1 || tipobaraja == 2) {
+			for (int i = 1; i <= (40 * tipobaraja); i++) {
+				if (i < 41) {
+					this.lista_cartas.add(new Carta(i));
+				} else {
+					this.lista_cartas.add(new Carta(i - 40));
+				}
+			}
+		}
+	}
+
+	public Baraja(int tipobaraja, boolean barajar) {
+		this(tipobaraja);
+		barajar();
+
+	}
+
+	// Métodos
+	/**
+	 * 
+	 */
+	public void barajar() {
+		Collections.shuffle(lista_cartas);
+
+		this.lista_cartas.get(0);
+
+		/*
+		 * Otra forma:
+		 * 
+		 * ArrayList<Carta> aux = new ArrayList<Carta>(); int con =
+		 * this.lista_cartas.size(); while (!this.lista_cartas.isEmpty()) { int random =
+		 * (int) (Math.random() * con); aux.add(this.lista_cartas.get(random));
+		 * this.lista_cartas.remove(random); con--; } for (int i = 0; i < aux.size();
+		 * i++) { this.lista_cartas.add(aux.get(i)); }
+		 * 
+		 */
+	}
+
+	public void cortar() {
+		ArrayList<Carta> aux = new ArrayList<Carta>();
+		int size = this.lista_cartas.size();
+		for (int i = (int) (Math.random() * size); i < this.lista_cartas.size(); i++) {
+
+		}
+	}
+
+	public void robar() {
+
+	}
+
+	public void insertaCartaFinal(int id_carta) {
+
+	}
+
+	public void insertaCartaPrincipio(int id_carta) {
+
+	}
+
+	public void insertaCartaFinal(Carta c) {
+
+	}
+
+	public void insertaCartaPrincipio(Carta c) {
+
+	}
+
+	// toStrings
+
+}

@@ -1,0 +1,46 @@
+package main;
+
+import java.util.ArrayList;
+import java.util.Scanner;
+import models.Baraja;
+import models.Carta;
+
+public class MainApp {
+
+	public static void main(String[] args) {
+		jugar7ymedia();
+	}
+	
+	public static void jugar7ymedia() {	
+		Scanner s = new Scanner(System.in);
+
+		Baraja baraja = new Baraja(1, true);
+
+		double puntuacion = 0;
+		int choice;
+		ArrayList<Carta> mano = new ArrayList<Carta>();
+		
+		System.out.println("Juego de las 7 y media:\n");
+
+		do {
+			System.out.println("¿Qué deseas hacer?\n1.Coger carta\n2.Plantarme");
+			choice = Integer.parseInt(s.nextLine());
+			if (choice == 1) {
+				Carta aux = new Carta(baraja.robar().getId());
+				mano.add(aux);
+				puntuacion += aux.getValor7yMedia();
+				System.out.println("Has sacado el " + aux.getNombreCarta()+"\tTu puntuación: "+puntuacion);
+				System.out.println("Tu mano de cartas:");
+				for (int i = 0; i < mano.size(); i++) {
+					System.out.println("· "+mano.get(i));
+				}
+			} else {
+				System.out.println("Por favor, introduce el número 1 o 2 para continuar con el juego o plantarte.");
+			}
+
+		} while (choice != 2);
+
+	s.close();
+	}
+
+}
