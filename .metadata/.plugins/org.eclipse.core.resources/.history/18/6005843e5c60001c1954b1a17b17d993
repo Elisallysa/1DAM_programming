@@ -147,7 +147,7 @@ public class SieteYMedia extends AbstractGame {
 							jugador1.jugarTurno();
 						}
 						System.out.println("");
-						if (jugador1.getPuntos() <= 7.5 && !jugador2.mano.isVacia()) {
+						if (jugador1.getPuntos() <= 7.5 && !jugador1.mano.isVacia()) {
 							System.out.println("Turno de " + jugador2.nombre + ".");
 							jugador2.jugarTurno();
 						}
@@ -157,12 +157,12 @@ public class SieteYMedia extends AbstractGame {
 				} else {
 					System.out.println("Empieza " + jugador2.nombre + ". ¡Adelante!");
 					do {
-						if (jugador1.getPuntos() <= 7.5 && !jugador2.mano.isVacia()) {
+						if (jugador1.getPuntos() <= 7.5) {
 							System.out.println("Turno de " + jugador2.nombre + ".");
 							jugador2.jugarTurno();
 						}
 						System.out.println("");
-						if (jugador2.getPuntos() <= 7.5 && !jugador1.mano.isVacia()) {
+						if (jugador2.getPuntos() <= 7.5) {
 							System.out.println("Turno de " + jugador1.nombre + ".");
 							jugador1.jugarTurno();
 						}
