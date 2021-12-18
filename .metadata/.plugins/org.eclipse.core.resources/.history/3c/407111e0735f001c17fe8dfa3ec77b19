@@ -1,0 +1,14 @@
+package models;
+
+public class CPUPlayer extends AbstractPlayer {
+
+	public CPUPlayer(Mesa mesa, String nombre) {
+		super(mesa, nombre);
+	}
+
+	@Override
+	public void jugarTurno() {
+		
+	}
+
+}

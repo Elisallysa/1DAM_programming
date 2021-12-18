@@ -1,0 +1,154 @@
+package models;
+
+import java.util.ArrayList;
+import java.util.Scanner;
+
+import enums.ModoJuego;
+
+public class SieteYMedia extends AbstractGame {
+
+	/**
+	 * Constructor del juego "7 y media". Cuando se construye, se crea un nuevo
+	 * objeto Mesa y una nueva lista de jugadores.
+	 */
+	public void SieteYmedia() {
+		this.mesa = new Mesa();
+		this.jugadores = new ArrayList<AbstractPlayer>();
+
+	}
+
+	@Override
+	public void bienvenida() {
+		System.out.println(
+				"Bienvenido al juego de las 7 y media.\nEl objetivo del juego es acercarse lo máximo posible al 7,5 sin pasarse.\nLas figuras valen 0,5 puntos y el resto de cartas tienen su valor.");
+
+	}
+
+	@Override
+	public void menuPrincipal() {
+		try {
+			System.out.println("¿Qué modo de juego desea jugar?\n 1. Solitario\t 2. UnovsCPU\t 3. PvP\t 4. Multiplayer");
+			Scanner s = new Scanner(System.in);
+			int modoChoice = Integer.parseInt(s.nextLine());
+			this.mesa = new Mesa();
+			this.jugadores = new ArrayList<AbstractPlayer>();
+
+			switch (modoChoice) {
+			case 1:
+				System.out.println("Modo Solitario seleccionado.");
+				this.modo = ModoJuego.Solitario;
+
+				System.out.println("Por favor, introduce tu nickname:");
+				String nickname = s.nextLine();
+				AbstractPlayer jugSolo = new HumanPlayer(mesa, nickname);
+				this.jugadores.add(jugSolo);
+
+				do {
+					jugSolo.jugarTurno();
+				} while (jugSolo.getPuntos() < 7.5 && !jugSolo.mano.isVacia());
+
+				System.out.println("");
+
+				// Resultados del juego Solitario:
+
+				if (jugSolo.getPuntos() == 0) {
+					System.out.println("¿No quieres jugar o qué?");
+				}
+				if (jugSolo.getPuntos() > 0 && jugSolo.getPuntos() <= 6) {
+					System.out.println("Te has plantado con " + jugSolo.getPuntos() + " puntos. Qué cagao.");
+				}
+				if (jugSolo.getPuntos() > 6 && jugSolo.getPuntos() < 7.5) {
+					System.out.println("Te has plantado con " + jugSolo.getPuntos() + " puntos. Uf, ¡qué cerca!");
+				}
+				if (jugSolo.getPuntos() == 7.5) {
+					System.out.println("¡Has ganado!");
+				}
+				if (jugSolo.getPuntos() > 7.5) {
+					System.out.println("Tu puntuación final es de " + jugSolo.getPuntos() + ". Te has pasado.");
+				}
+				break;
+			case 2:
+				System.out.println("Modo Uno vs CPU seleccionado.");
+				this.modo = ModoJuego.UnovsCPU;
+				System.out.println("Por favor, introduce tu nickname:");
+				nickname = s.nextLine();
+				System.out.println("¿Cómo se va a llamar tu contrincante?");
+				String cpu0Name = s.nextLine();
+				AbstractPlayer jugador0 = new HumanPlayer(mesa, nickname);
+				AbstractPlayer cpu0 = new CPUPlayer(mesa, cpu0Name);
+				this.jugadores.add(jugador0);
+				this.jugadores.add(cpu0);
+
+				if (Math.round(Math.random()) == 0) {
+					System.out.println("Empiezas tú, " + jugador0.nombre + ".");
+					do {
+						if (cpu0.getPuntos() <= 7.5) {
+							jugador0.jugarTurno();
+						}
+						if (jugador0.getPuntos() <= 7.5) {
+							cpu0.jugarTurno();
+						}
+
+					} while ((jugador0.getPuntos() <= 7.5 && cpu0.getPuntos() <= 7.5) && (!jugador0.mano.isVacia() && !cpu0.mano.isVacia()));
+				} else {
+					System.out.println("Empieza " + cpu0.nombre + ".");
+					do {
+						if (jugador0.getPuntos() <= 7.5) {
+							cpu0.jugarTurno();
+						}
+						if (cpu0.getPuntos() <= 7.5) {
+							jugador0.jugarTurno();
+						}
+					} while ((jugador0.getPuntos() <= 7.5 && cpu0.getPuntos() <= 7.5) && (!jugador0.mano.isVacia() && !cpu0.mano.isVacia()));
+				}
+
+				System.out.println("");
+				// Resultados del juego 1vsCPU:
+
+				System.out.println("Tu puntuación final: " + jugador0.getPuntos());
+				System.out.println("Puntuación de " + cpu0.nombre + ": " + cpu0.getPuntos());
+
+				if (jugador0.getPuntos() > 7.5) {
+					System.out.println("Lo siento, " + cpu0.nombre + " ha ganado el juego.");
+				} else if (cpu0.getPuntos() > 7.5) {
+					System.out.println("¡Has ganado, " + jugador0.nombre + "!");
+				} else if ((7.5 - jugador0.getPuntos()) > (7.5 - cpu0.getPuntos()) || cpu0.getPuntos()==7.5) {
+					System.out.println("Lo siento, " + cpu0.nombre + " ha ganado el juego.");
+				} else if ((7.5 - cpu0.getPuntos()) > (7.5 - jugador0.getPuntos()) || jugador0.getPuntos()==7.5) {
+					System.out.println("¡Has ganado, " + jugador0.nombre + "!");
+				} else if (jugador0.getPuntos() == cpu0.getPuntos()) {
+					System.out.println("¡Empate!");
+				}
+
+				break;
+			case 3:
+				System.out.println("Modo PvP seleccionado.");
+				this.modo = ModoJuego.PvP;
+				System.out.println("Este modo no está disponible.");
+				break;
+			case 4:
+				System.out.println("Modo Multijugador seleccionado.");
+				this.modo = ModoJuego.Multiplayer;
+				System.out.println("Este modo no está disponible.");
+				break;
+			default:
+				System.out.println("Por favor introduzca un número entero del 1 - 4.");
+				break;
+
+			}
+		} catch (Exception e) {
+			System.out.println("Por favor introduce un número entero del 1-4.");
+		}
+
+	}
+
+	@Override
+	public AbstractPlayer nextTurno() {
+		return null;
+	}
+
+	@Override
+	public void start() {
+	}
+
+}

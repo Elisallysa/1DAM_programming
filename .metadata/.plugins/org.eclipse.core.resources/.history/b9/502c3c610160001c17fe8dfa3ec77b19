@@ -1,0 +1,73 @@
+package models;
+
+import java.util.ArrayList;
+import java.util.Scanner;
+
+import enums.ModoJuego;
+
+public class SieteYMedia extends AbstractGame {
+
+	/**
+	 * Constructor del juego "7 y media". Cuando se construye, se crea un nuevo objeto Mesa y una nueva lista de jugadores.
+	 */
+	public void SieteYmedia() {
+		this.mesa = new Mesa();
+		this.jugadores = new ArrayList<AbstractPlayer>();
+
+	}
+
+	@Override
+	public void bienvenida() {
+		System.out.println("Bienvenido al juego de las 7 y media.\nEl objetivo del juego es acercarse lo máximo posible al 7,5 sin pasarse.\nLas figuras valen 0,5 puntos y el resto de cartas tienen su valor.");
+		
+	}
+
+	@Override
+	public void menuPrincipal() {
+		System.out.println("¿Qué modo de juego desea jugar?\n 1. Solitario\t 2. UnovsCPU\t 3. PvP\t 4. Multiplayer");
+		Scanner s = new Scanner (System.in);
+		int modoChoice = Integer.parseInt(s.nextLine());
+		
+		switch (modoChoice) {
+		case 1:
+			System.out.println("Modo Solitario seleccionado.");
+			this.modo = ModoJuego.Solitario;
+			this.mesa = new Mesa();
+			this.jugadores = new ArrayList<AbstractPlayer>();
+			System.out.println("Por favor, introduce tu nickname:");
+			String nickname = s.nextLine();
+			AbstractPlayer jugador1 = new HumanPlayer(mesa, nickname);
+			this.jugadores.add(jugador1);
+			break;
+		case 2:
+			System.out.println("Modo Uno vs CPU seleccionado.");
+			this.modo = ModoJuego.UnovsCPU;
+			break;
+		case 3:
+			System.out.println("Modo PvP seleccionado.");
+			this.modo = ModoJuego.PvP;
+			break;
+		case 4:
+			System.out.println("Modo Multijugador seleccionado.");
+			this.modo = ModoJuego.Multiplayer;
+			break;
+		default:
+			System.out.println("Por favor introduzca un número entero del 1 - 4.");
+			break;
+		
+		}
+		
+		
+	}
+
+	@Override
+	public AbstractPlayer nextTurno() {
+		return null;
+	}
+
+	@Override
+	public void start() {
+	}
+
+
+}

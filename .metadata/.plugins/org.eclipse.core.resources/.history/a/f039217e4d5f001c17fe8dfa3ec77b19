@@ -1,0 +1,19 @@
+package models;
+
+public class Mano {
+	// Métodos
+	
+	/**
+	 * Método que imprime todas las cartas en la mano.
+	 */
+	public void listarCartas() {
+		
+	}
+	
+	/**
+	 * Lista cartas y además permite elegir una de las cartas y la devuelve.
+	 */
+	public Carta elegirCarta() {
+		
+	}
+}

@@ -1,0 +1,33 @@
+package models;
+
+import java.util.ArrayList;
+
+import enums.ModoJuego;
+
+public abstract class AbstractGame {
+	
+	//Atributos
+	
+	/**
+	 * 
+	 */
+	protected Mesa mesa;
+	/**
+	 * 
+	 */
+	protected ArrayList<AbstractPlayer> jugadores;
+	protected boolean finished;
+	protected ModoJuego modo;
+	protected int ronda;
+	
+	//Métodos
+	public abstract void bienvenida();
+	public abstract void menuPrincipal();
+	public abstract AbstractPlayer nextTurno();
+	public abstract void start();
+	public abstract void barajar();
+	/**
+	 * Método que recoge todas las cartas en la mano de los jugadores.
+	 */
+	public abstract void finish();
+}

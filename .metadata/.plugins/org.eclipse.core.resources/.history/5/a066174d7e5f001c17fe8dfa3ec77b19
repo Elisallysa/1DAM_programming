@@ -1,0 +1,46 @@
+package models;
+
+import java.util.ArrayList;
+
+public class SieteYMedia extends AbstractGame {
+
+	/**
+	 * Constructor del juego "7 y media". Cuando se construye, se crea un nuevo objeto Mesa y una nueva lista de jugadores.
+	 */
+	public void SieteYmedia() {
+		this.mesa = new Mesa();
+		this.jugadores = new ArrayList<AbstractPlayer>();
+
+	}
+
+	@Override
+	public void bienvenida() {
+
+	}
+
+	@Override
+	public void menuPrincipal() {
+
+	}
+
+	@Override
+	public AbstractPlayer nextTurno() {
+		return null;
+	}
+
+	@Override
+	public void start() {
+
+	}
+
+	@Override
+	public void barajar() {
+
+	}
+
+	@Override
+	public void finish() {
+
+	}
+
+}

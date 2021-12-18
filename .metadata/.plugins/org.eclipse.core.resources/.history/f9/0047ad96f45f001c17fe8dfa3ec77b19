@@ -1,0 +1,65 @@
+package models;
+
+import java.util.ArrayList;
+import java.util.Scanner;
+
+public class HumanPlayer extends AbstractPlayer {
+
+	// Constructor
+
+	/**
+	 * Constructor del jugador humano, que hereda los atributos de AbstractPlayer.
+	 * 
+	 * @param mesa   - Mesa del juego
+	 * @param nombre - Nombre del jugador
+	 */
+	public HumanPlayer(Mesa mesa, String nombre) {
+		super(mesa, nombre);
+	}
+
+	/**
+	 * Método que permite al jugador humano jugar su turno.
+	 */
+	@Override
+	public void jugarTurno() {
+		Scanner s = new Scanner(System.in);
+		int choice;
+		boolean finJuego = false;
+
+		try {
+			do {
+				if (puntuacion < 7.5) {
+					System.out.println("¿Qué deseas hacer?\n1.Robar carta\t2.Plantarme");
+					choice = Integer.parseInt(s.nextLine());
+
+					switch (choice) {
+					case 1:
+						Carta aux = new Carta(baraja.robar().getId());
+						mano.add(aux);
+						puntuacion += aux.getValor7yMedia();
+						System.out.println("Has sacado el " + aux.getNombreCarta() + "\tTu puntuación: " + puntuacion);
+						System.out.println("Tu mano de cartas:");
+						for (int i = 0; i < mano.size(); i++) {
+							System.out.println("· " + mano.get(i).getNombreCarta());
+						}
+						break;
+					case 2:
+						finJuego = true;
+						break;
+					default:
+						System.out.println(
+								"Por favor, introduce el número 1 o 2 para continuar con el juego o plantarte.");
+						break;
+					}
+
+				} else {
+					finJuego = true;
+				}
+			} while (!finJuego);
+
+		} catch (Exception exc) {
+			System.out.println("Por favor, introduzca el 1 o el 2 para jugar.");
+		}
+	}
+
+}

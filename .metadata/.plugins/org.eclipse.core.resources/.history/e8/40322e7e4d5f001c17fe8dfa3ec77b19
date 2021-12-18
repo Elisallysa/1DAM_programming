@@ -1,0 +1,60 @@
+package models;
+
+import java.util.ArrayList;
+
+public class Mesa {
+	
+	// Atributos
+	/**
+	 * 
+	 */
+	private Baraja baraja;
+
+	// Constructores
+	/**
+	 * Cuando se cree la mesa no quiero pasarle directamente la baraja, porque yo puedo crear la baraja por él.
+	 */
+	public Mesa() {
+		this.baraja = new Baraja(1, true);
+	}
+
+	// Getters & Setters
+	
+	/**
+	 * 
+	 * @return
+	 */
+	public Baraja getBaraja() {
+		return baraja;
+	}
+	
+	// Métodos
+	/**
+	 * 
+	 * @return
+	 */
+	Carta robarCartaDeBaraja() {
+		return this.baraja.robar();
+	}
+	
+	/**
+	 * 
+	 * @param n
+	 * @return
+	 */
+	List<Carta> robarVariasCartas(int n) {
+		ArrayList<Carta> aux = new ArrayList<Carta>();
+		for (int i = 0; i < array.length; i++) {
+			
+		}
+	}
+	
+	/**
+	 * 
+	 * @param c
+	 */
+	public void addCartaABaraja(Carta c) {
+		
+	}
+	
+}

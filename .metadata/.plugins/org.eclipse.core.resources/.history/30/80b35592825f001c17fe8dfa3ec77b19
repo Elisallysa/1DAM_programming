@@ -1,0 +1,42 @@
+package models;
+
+import java.util.ArrayList;
+
+public class SieteYMedia extends AbstractGame {
+
+	/**
+	 * Constructor del juego "7 y media". Cuando se construye, se crea un nuevo objeto Mesa y una nueva lista de jugadores.
+	 */
+	public void SieteYmedia() {
+		this.mesa = new Mesa();
+		this.jugadores = new ArrayList<AbstractPlayer>();
+
+	}
+
+	@Override
+	public void bienvenida() {
+		System.out.println("Bienvenido al juego de las 7 y media. ¿Qué modo de juego desea jugar?\n 1. Solitario\t 2. UnovsCPU\t 3. PvP\n 4. Multiplayer");
+		
+		
+	}
+
+	@Override
+	public void menuPrincipal() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public AbstractPlayer nextTurno() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void start() {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+}

@@ -1,0 +1,29 @@
+package models;
+
+import java.util.ArrayList;
+
+public abstract class AbstractGame {
+	
+	//Atributos
+	
+	/**
+	 * 
+	 */
+	private Mesa mesa;
+	/**
+	 * 
+	 */
+	private ArrayList<AbstractPlayer> jugadores;
+	
+	
+	//Métodos
+	public abstract void bienvenida();
+	public abstract void menuPrincipal();
+	public abstract AbstractPlayer nextTurno();
+	public abstract void start();
+	public abstract void barajar();
+	/**
+	 * Método que recoge todas las cartas en la mano de los jugadores.
+	 */
+	public abstract void finish();
+}

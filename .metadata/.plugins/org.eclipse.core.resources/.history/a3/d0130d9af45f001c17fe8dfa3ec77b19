@@ -1,0 +1,46 @@
+package models;
+
+public abstract class AbstractPlayer {
+	
+	// Atributos
+	
+	/**
+	 * Objeto Mano con las cartas de la mano del jugador.
+	 */
+	private Mano mano;
+	/**
+	 * Objeto Mesa donde se juega la partida.
+	 */
+	private Mesa mesa;
+	/**
+	 * String que representa el nombre del jugador.
+	 */
+	private String nombre;
+	/**
+	 * Puntuación del jugador.
+	 */
+	private int puntos;
+	
+	// Constructor
+	/*
+	 * Constructor del jugador abstracto que juega en una mesa y tiene un nombre y al que se le crea una nueva mano vacía de cartas y se
+	 * le da una puntuación inicial de 0 puntos. 
+	 */
+	public AbstractPlayer(Mesa mesa, String nombre) {
+		super();
+		this.mano = new Mano();
+		this.mesa = mesa;
+		this.nombre = nombre;
+		this.puntos = 0;
+	}
+
+
+
+	// Métodos
+	/**
+	 * Método para que el jugador pueda jugar su turno.
+	 */
+	public abstract void jugarTurno();
+	
+	
+}

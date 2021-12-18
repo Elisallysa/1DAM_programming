@@ -1,0 +1,29 @@
+package models;
+
+public abstract class AbstractPlayer {
+	
+	// Atributos
+	
+	/**
+	 * 
+	 */
+	private Mano mano;
+	/**
+	 * 
+	 */
+	private Mesa mesa;
+	/**
+	 * 
+	 */
+	private String nombre;
+	/**
+	 * 
+	 */
+	private int puntos;
+	
+	// Métodos
+	/**
+	 * 
+	 */
+	public abstract void jugarTurno();
+}

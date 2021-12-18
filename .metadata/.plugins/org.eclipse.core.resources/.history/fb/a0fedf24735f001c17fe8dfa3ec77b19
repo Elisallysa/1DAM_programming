@@ -1,0 +1,14 @@
+package models;
+
+public class HumanPlayer extends AbstractPlayer{
+
+	public HumanPlayer(Mesa mesa, String nombre) {
+		super(mesa, nombre);
+	}
+
+	@Override
+	public void jugarTurno() {
+		
+	}
+
+}

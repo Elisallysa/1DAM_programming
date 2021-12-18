@@ -1,0 +1,22 @@
+package models;
+
+public class CPUPlayer extends AbstractPlayer {
+
+	/**
+	 * Constructor del jugador CPU, que hereda los atributos de AbstractPlayer.
+	 * @param mesa - Mesa del juego
+	 * @param nombre - Nombre del jugador
+	 */
+	public CPUPlayer(Mesa mesa, String nombre) {
+		super(mesa, nombre);
+	}
+
+	/**
+	 * Método con el que el CPU juega su turno.
+	 */
+	@Override
+	public void jugarTurno() {
+		
+	}
+
+}

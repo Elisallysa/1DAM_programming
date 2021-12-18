@@ -1,0 +1,21 @@
+package models;
+
+public class HumanPlayer extends AbstractPlayer{
+
+	// Constructor
+	
+	/**
+	 * Constructor del jugador humano, que hereda los atributos de AbstractPlayer.
+	 * @param mesa - Mesa del juego
+	 * @param nombre - Nombre del jugador
+	 */
+	public HumanPlayer(Mesa mesa, String nombre) {
+		super(mesa, nombre);
+	}
+
+	@Override
+	public void jugarTurno() {
+		
+	}
+
+}
